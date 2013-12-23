@@ -1,0 +1,9 @@
+database:
+  # the name of your JDBC driver
+  driverClass: org.sqlite.JDBC
+
+  # the JDBC URL
+  url: jdbc:sqlite:dashboard.db
+
+  # username to use
+  user: sqlite
