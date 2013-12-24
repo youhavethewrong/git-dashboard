@@ -93,7 +93,8 @@ public class Commit {
 
 	@Override
 	public String toString() {
-		return "id=" + getId() + ",author=" + getAuthor() + ",message="
-				+ getMessage() + ",project=" + getProject();
+		return "{\"id\":\"" + getId() + "\", \"author\":\"" + getAuthor()
+				+ "\", \"message\":\"" + getMessage() + "\" ,\"project\":\""
+				+ getProject() + "\"}";
 	}
 }
