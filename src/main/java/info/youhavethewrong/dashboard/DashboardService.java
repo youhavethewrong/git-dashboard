@@ -1,6 +1,7 @@
 package info.youhavethewrong.dashboard;
 
 import info.youhavethewrong.dashboard.resources.*;
+import info.youhavethewrong.dashboard.support.CommitTextProvider;
 
 import org.skife.jdbi.v2.DBI;
 
@@ -30,6 +31,7 @@ public class DashboardService extends Service<DashboardConfiguration> {
 		final CommitDao commitDb = jdbi.onDemand(CommitDao.class);
 		commitDb.createCommitTable();
 
+		env.addProvider(new CommitTextProvider());
 		env.addResource(new DashboardResource(commitDb));
 	}
 
