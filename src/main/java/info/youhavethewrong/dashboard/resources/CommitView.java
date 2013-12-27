@@ -18,5 +18,4 @@ public class CommitView extends View {
 	public void setCommit(Commit commit) {
 		this.commit = commit;
 	}
-
 }

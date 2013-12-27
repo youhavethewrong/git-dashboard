@@ -63,8 +63,14 @@ public class DashboardResource {
 	}
 
 	@GET
+	@Path(".json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<String> getAllProjectsWorkedOn() {
+	public List<String> getAllProjectsWorkedOnJson() {
 		return commit.selectProjects();
+	}
+
+	@GET
+	public ProjectView getAllProjectsWorkedOn() {
+		return new ProjectView(commit.selectProjects());
 	}
 }
