@@ -1,5 +1,7 @@
 package info.youhavethewrong.dashboard.resources;
 
+import java.util.List;
+
 import info.youhavethewrong.dashboard.support.CommitMapper;
 
 import org.skife.jdbi.v2.sqlobject.*;
@@ -21,5 +23,5 @@ public interface CommitDao {
 	Commit findCommitById(@Bind("id") String id);
 
 	@SqlQuery("select distinct project from commits")
-	String selectProjects();
+	List<String> selectProjects();
 }

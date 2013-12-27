@@ -1,5 +1,7 @@
 package info.youhavethewrong.dashboard.resources;
 
+import java.util.List;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -61,7 +63,8 @@ public class DashboardResource {
 	}
 
 	@GET
-	public String getAllProjectsWorkedOn() {
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<String> getAllProjectsWorkedOn() {
 		return commit.selectProjects();
 	}
 }
