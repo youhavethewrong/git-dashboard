@@ -1,6 +1,9 @@
 package info.youhavethewrong.dashboard.resources;
 
+import info.youhavethewrong.dashboard.support.CommitMapper;
+
 import org.skife.jdbi.v2.sqlobject.*;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 public interface CommitDao {
 	@SqlUpdate("create table if not exists commits (id string, author string, message string, project string)")
@@ -13,7 +16,8 @@ public interface CommitDao {
 	void insertCommit(@Bind("id") String id, @Bind("author") String author,
 			@Bind("message") String message, @Bind("project") String project);
 
-	@SqlQuery("select from commits where rowid = :id")
+	@RegisterMapper(CommitMapper.class)
+	@SqlQuery("select * from commits where id = :id")
 	Commit findCommitById(@Bind("id") String id);
 
 	@SqlQuery("select distinct project from commits")

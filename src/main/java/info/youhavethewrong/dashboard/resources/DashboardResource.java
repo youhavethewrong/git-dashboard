@@ -55,6 +55,12 @@ public class DashboardResource {
 	}
 
 	@GET
+	@Path("{id}")
+	public CommitView getCommit(@PathParam("id") String id) {
+		return new CommitView(commit.findCommitById(id));
+	}
+
+	@GET
 	public String getAllProjectsWorkedOn() {
 		return commit.selectProjects();
 	}
