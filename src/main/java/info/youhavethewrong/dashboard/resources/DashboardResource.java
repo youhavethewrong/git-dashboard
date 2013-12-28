@@ -56,12 +56,41 @@ public class DashboardResource {
 		return addMe.toString();
 	}
 
+	/**
+	 * Fetches the stored information about an individual commit based on the id
+	 * path param provided and renders in fancy HTML/CSS/JS.
+	 * 
+	 * @param id
+	 *            Commit id you wish to see.
+	 * @return Fancy HTML/CSS/JS page rendered by FreeMarker with information
+	 *         from the Commit specified.
+	 */
 	@GET
 	@Path("{id}")
 	public CommitView getCommit(@PathParam("id") String id) {
 		return new CommitView(commit.findCommitById(id));
 	}
 
+	/**
+	 * Fetches the stored information about an individual commit based on the id
+	 * path param provided and converts to JSON.
+	 * 
+	 * @param id
+	 *            Commit id you wish to see.
+	 * @return A JSON representation of the Commit object identified by id.
+	 */
+	@GET
+	@Path("{id}.json")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Commit getCommitJson(@PathParam("id") String id) {
+		return commit.findCommitById(id);
+	}
+
+	/**
+	 * Generates a JSON list of the projects worked on.
+	 * 
+	 * @return List of projects.
+	 */
 	@GET
 	@Path(".json")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -69,6 +98,11 @@ public class DashboardResource {
 		return commit.selectProjects();
 	}
 
+	/**
+	 * Renders a fancy HTML/CSS/JS page with the list of projects worked on.
+	 * 
+	 * @return Fancy HTML/CSS/JS.
+	 */
 	@GET
 	public ProjectView getAllProjectsWorkedOn() {
 		return new ProjectView(commit.selectProjects());
