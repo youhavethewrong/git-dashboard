@@ -30,9 +30,9 @@
 
     <div id="h2"><h2>These projects have been worked on recently.</h2></div>
     <ul>
-        <#list projects as i>
-            <li>${i}</li>
-        </#list> 
+        <#list projects?keys as key>
+            <li>${key} (${projects[key]} changes)</li>
+        </#list>
     </ul>
     </div>
     </body>

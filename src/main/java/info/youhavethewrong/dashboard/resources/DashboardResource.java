@@ -1,6 +1,6 @@
 package info.youhavethewrong.dashboard.resources;
 
-import java.util.List;
+import java.util.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -105,6 +105,13 @@ public class DashboardResource {
 	 */
 	@GET
 	public ProjectView getAllProjectsWorkedOn() {
-		return new ProjectView(commit.selectProjects());
+		Map<String, String> projectCommits = new HashMap<String, String>();
+		List<String> projects = commit.selectProjects();
+		for (String project : projects) {
+			projectCommits.put(project,
+					commit.numberOfCommitsForProject(project));
+		}
+
+		return new ProjectView(projectCommits);
 	}
 }

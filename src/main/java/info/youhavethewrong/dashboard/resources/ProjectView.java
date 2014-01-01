@@ -1,23 +1,23 @@
 package info.youhavethewrong.dashboard.resources;
 
-import java.util.List;
+import java.util.*;
 
 import com.yammer.dropwizard.views.View;
 
 public class ProjectView extends View {
 
-	private List<String> projects;
+	private Map<String, String> projects;
 
-	public ProjectView(List<String> projects) {
+	public ProjectView(Map<String, String> projectCommits) {
 		super("projects.ftl");
-		this.setProjects(projects);
+		this.setProjects(projectCommits);
 	}
 
-	public List<String> getProjects() {
+	public Map<String, String> getProjects() {
 		return projects;
 	}
 
-	public void setProjects(List<String> projects) {
-		this.projects = projects;
+	public void setProjects(Map<String, String> projectCommits) {
+		this.projects = projectCommits;
 	}
 }

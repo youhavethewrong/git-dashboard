@@ -24,4 +24,7 @@ public interface CommitDao {
 
 	@SqlQuery("select distinct project from commits")
 	List<String> selectProjects();
+
+	@SqlQuery("select count(id) from commits where project = :project")
+	String numberOfCommitsForProject(@Bind("project") String project);
 }
